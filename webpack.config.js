@@ -15,7 +15,8 @@ module.exports = {
 		rules: [
 			{ test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] },
 			{ test: /\.js$/, exclude: /node_modules/, use: "babel-loader" },
-			// {test : / /}
+			{ test: /\.(png|jp(e*)g)$/, use: { loader: 'url-loader', options: { limit: 8000, name: 'images/[hash]-[name].[ext]' } } },
+			{ test: /\.svg$/, use: { loader: 'file-loader', options: { name: 'images/[hash]-[name].[ext]' } } }
 		],
 	},
 	plugins: [new HtmlWebpackPlugin({ template: "./src/public/index.html" })],
